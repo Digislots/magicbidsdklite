@@ -45,3 +45,19 @@ dependencies {
     implementation ("com.google.android.gms:play-services-ads:22.2.0")
     implementation ("com.google.android.gms:play-services-location:21.0.1")
 }
+
+publishing {
+    publications {
+        create<MavenPublication>("ReleaseAar") {
+            groupId = "com.example.mylibrary"
+            artifactId = "mylibrary"
+            version = "1.3"
+            afterEvaluate {
+                artifact(tasks.getByName("bundleReleaseAar"))
+            }
+
+        }
+    }
+
+
+}
